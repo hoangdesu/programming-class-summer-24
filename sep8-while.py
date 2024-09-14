@@ -95,15 +95,36 @@
 
 # print(f'Total = {total}')
 
-Homework: 
+# Homework: 
 
-Enter a number for factorial: 5
+# Enter a number for factorial: 5
 
-Factorial: 
-    Output: "5! = 5 * 4 * 3 * 2 * 1 = 120"
+# Factorial: 
+#     Output: "5! = 5 * 4 * 3 * 2 * 1 = 120"
 
-while
-gom số
-gom chữ: build string
+# while
+# gom số
+# gom chữ: build string
 
-0! = 1
+# 0! = 1
+
+n = 5
+total = 1
+output = f'{n}! = '
+
+while n >= 1:
+    # print(n)
+    total = total * n
+    output += str(n)
+    
+    if n == 1:
+        output += ' = '
+    else:
+        output += ' x '
+        
+    n -= 1
+    
+output += str(total)
+print(output)
+    
+# 5! = 5 x 4 x 3 x 2 x 1 = 120
