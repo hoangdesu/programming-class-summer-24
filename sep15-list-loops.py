@@ -75,56 +75,56 @@
 #     print(f'Sorry we dont have {order}')
 
 
-HW:
-games = ['lien minh', 'valorant', 'lien quan']
+# HW:
+# games = ['lien minh', 'valorant', 'lien quan']
 
-Chương trình cho phép user thực hiện 4 chức năng:
-    1. Show tất cả các games trong list (show có counter)
-        - ví dụ:
-            1. lien minh
-            2. valorant
-            3. lien quan
-    2. Thêm 1 game vào list
-    3. Xoá 1 game trong list
-    4. Quit chương trình
+# Chương trình cho phép user thực hiện 4 chức năng:
+#     1. Show tất cả các games trong list (show có counter)
+#         - ví dụ:
+#             1. lien minh
+#             2. valorant
+#             3. lien quan
+#     2. Thêm 1 game vào list
+#     3. Xoá 1 game trong list
+#     4. Quit chương trình
     
     
-Chương trình phải dc bọc trong 1 cái while loop.
+# Chương trình phải dc bọc trong 1 cái while loop.
 
-Chọn chức năng (1-4): 1
-List của bạn hiện đang có 3 games:
-    1. lien minh
-    2. valorant
-    3. lien quan
+# Chọn chức năng (1-4): 1
+# List của bạn hiện đang có 3 games:
+#     1. lien minh
+#     2. valorant
+#     3. lien quan
 
-Chọn chức năng (1-4): 2
-Nhập tên game mới: tốc chiến
-Tốc chiến đã được thêm vào list game của bạn.
+# Chọn chức năng (1-4): 2
+# Nhập tên game mới: tốc chiến
+# Tốc chiến đã được thêm vào list game của bạn.
 
-Chọn chức năng (1-4): 1
-List của bạn hiện đang có 3 games:
-    1. lien minh
-    2. valorant
-    3. lien quan
-    4. tốc chiến
+# Chọn chức năng (1-4): 1
+# List của bạn hiện đang có 3 games:
+#     1. lien minh
+#     2. valorant
+#     3. lien quan
+#     4. tốc chiến
     
-Chọn chức năng (1-4): 3
-Nhập tên game để xoá: valorant
-(nếu game có trong list) Valorant đã dc xoá khỏi list.
+# Chọn chức năng (1-4): 3
+# Nhập tên game để xoá: valorant
+# (nếu game có trong list) Valorant đã dc xoá khỏi list.
 
-Chọn chức năng (1-4): 3
-Nhập tên game để xoá: audition
-(nếu game ko có trong list) Bạn ko có game audition trong list để xoá.
+# Chọn chức năng (1-4): 3
+# Nhập tên game để xoá: audition
+# (nếu game ko có trong list) Bạn ko có game audition trong list để xoá.
 
-Chọn chức năng (1-4): 1
-List của bạn hiện đang có 3 games:
-    1. lien minh
-    2. lien quan
-    3. tốc chiến
+# Chọn chức năng (1-4): 1
+# List của bạn hiện đang có 3 games:
+#     1. lien minh
+#     2. lien quan
+#     3. tốc chiến
     
-Chọn chức năng (1-4): 4
-Goodbye! 
+# Chọn chức năng (1-4): 4
+# Goodbye! 
 
-- Hint: 
-    1. làm từng chức năng nhỏ 1-4
-    2. bọc cả chương trình trong 1 while loop
+# - Hint: 
+#     1. làm từng chức năng nhỏ 1-4
+#     2. bọc cả chương trình trong 1 while loop
