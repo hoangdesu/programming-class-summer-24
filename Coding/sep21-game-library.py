@@ -54,6 +54,7 @@ while True:
 
     # exit the app
     elif command == '5':
+        print('Thank you!')
         break
 
     else:

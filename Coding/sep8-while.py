@@ -19,20 +19,20 @@
 # print('Correct!')
 
 # Guess the random number
-# import random
+import random
 
-# rand_num = random.randint(0, 100)
-# fav_num = int(input('Guess my favorite number: '))
-# count = 1
+rand_num = random.randint(0, 100)
+fav_num = int(input('Guess my favorite number: '))
+count = 1
 
-# while fav_num != rand_num:
-#     if fav_num > rand_num:
-#         fav_num = int(input('Guess lower: '))
-#     else:
-#         fav_num = int(input('Guess higher: '))
-#     count += 1
+while fav_num != rand_num:
+    if fav_num > rand_num:
+        fav_num = int(input('Guess lower: '))
+    else:
+        fav_num = int(input('Guess higher: '))
+    count += 1
 
-# print(f'Correct! The number is {rand_num}. You guess it in {count} times')
+print(f'Correct! The number is {rand_num}. You guess it in {count} times')
 
 # Scoreboard:
 #     - Phu: 5 -> 3
@@ -108,23 +108,23 @@
 
 # 0! = 1
 
-n = 5
-total = 1
-output = f'{n}! = '
+# n = 5
+# total = 1
+# output = f'{n}! = '
 
-while n >= 1:
-    # print(n)
-    total = total * n
-    output += str(n)
+# while n >= 1:
+#     # print(n)
+#     total = total * n
+#     output += str(n)
     
-    if n == 1:
-        output += ' = '
-    else:
-        output += ' x '
+#     if n == 1:
+#         output += ' = '
+#     else:
+#         output += ' x '
         
-    n -= 1
+#     n -= 1
     
-output += str(total)
-print(output)
+# output += str(total)
+# print(output)
     
 # 5! = 5 x 4 x 3 x 2 x 1 = 120
