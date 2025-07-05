@@ -2,6 +2,8 @@ import pygame as pg
 import random
 
 pg.init()
+pg.font.init()
+pg.mixer.init()
 
 pg.display.set_caption('Beo săn mồi 😋') 
 
@@ -16,11 +18,10 @@ FPS = pg.time.Clock()
 beo_sprite = pg.image.load('beo.png').convert_alpha()
 beo_sprite = pg.transform.scale(beo_sprite, (100, 100 * (350 / 339)))
 
-x = 400
-y = 300
+beo_x = 400
+beo_y = 300
 direction = 'right'
-speed = 6
-
+speed = 8
 
 takoyaki_sprite = pg.image.load('takoyaki.png').convert_alpha()
 takoyaki_sprite = pg.transform.scale(takoyaki_sprite, (80, 80 * (350 / 339)))
@@ -28,6 +29,12 @@ takoyaki_sprite = pg.transform.scale(takoyaki_sprite, (80, 80 * (350 / 339)))
 tako_x = random.randint(10, 900)
 tako_y = random.randint(10, 700)
 
+score = 1
+my_font = pg.font.SysFont('Comic Sans MS', 30)
+score_box = my_font.render(f'Score: {score}', False, (0, 0, 0))
+
+nom_sound = pg.mixer.Sound('nom.mp3')
+nom_sound.set_volume(0.8) # 0 (0%) -> 1.0 (100%)
 
 # Game loop
 running = True
@@ -47,7 +54,9 @@ while running:
     
     screen.blit(takoyaki_sprite, (tako_x, tako_y))
     
-    screen.blit(beo_sprite, (x, y))
+    screen.blit(beo_sprite, (beo_x, beo_y))
+    
+    screen.blit(score_box, (SCREEN_WIDTH - score_box.get_width() - 20, 20))
 
 
     # move the food left and right
@@ -67,18 +76,38 @@ while running:
     key_pressed = pg.key.get_pressed()
     if key_pressed[pg.K_RIGHT]:
         # if y >= circle_radius:
-            x += speed
+            beo_x += speed
     elif key_pressed[pg.K_LEFT]:
         # if y <= SCREEN_HEIGHT - circle_radius:
-            x -= speed
+            beo_x -= speed
     
     if key_pressed[pg.K_UP]:
         # if y >= circle_radius:
-            y -= speed
+            beo_y -= speed
     elif key_pressed[pg.K_DOWN]:
         # if y <= SCREEN_HEIGHT - circle_radius:
-            y += speed
-     
+            beo_y += speed
+
+    
+    # axis-aligned bounding boxes (AABB)
+    # Collision detection between the character and the food
+    
+    
+    if (
+        beo_x < tako_x + takoyaki_sprite.get_width() and
+        beo_x + beo_sprite.get_width() > tako_x and
+        beo_y < tako_y + takoyaki_sprite.get_height() and
+        beo_y + beo_sprite.get_height() > tako_y):
+
+        print('NOM NOM NOM', score)
+        score += 1
+        score_box = my_font.render(f'Score: {score}', False, (0, 0, 0))
+        
+        nom_sound.play()
+
+        tako_x = random.randint(10, 900)
+        tako_y = random.randint(10, 700)
+        
     
     pg.display.flip()
     FPS.tick(60)
