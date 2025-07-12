@@ -16,7 +16,7 @@ FPS = pg.time.Clock()
 
 # Load game sprites
 beo_sprite = pg.image.load('beo.png').convert_alpha()
-beo_sprite = pg.transform.scale(beo_sprite, (100, 100 * (350 / 339)))
+beo_sprite = pg.transform.scale(beo_sprite, (100, 100))
 
 beo_x = 400
 beo_y = 300
@@ -28,6 +28,18 @@ takoyaki_sprite = pg.transform.scale(takoyaki_sprite, (80, 80 * (350 / 339)))
 
 tako_x = random.randint(10, 900)
 tako_y = random.randint(10, 700)
+
+# Bomb
+bomb_sprite = pg.image.load('bomb.png').convert_alpha()
+bomb_sprite = pg.transform.scale(bomb_sprite, (80, 80 * (350 / 339)))
+bomb_x = random.randint(10, 900)
+bomb_y = random.randint(10, 700)
+# bomb_x = 700
+# bomb_y = 100
+bomb_speed = 15
+bomb_dx = bomb_speed if random.randint(0, 1) == 1 else -bomb_speed
+bomb_dy = bomb_speed if random.randint(0, 1) == 1 else -bomb_speed
+
 
 score = 1
 my_font = pg.font.SysFont('Comic Sans MS', 30)
@@ -53,6 +65,8 @@ while running:
     screen.fill((232, 241, 255))
     
     screen.blit(takoyaki_sprite, (tako_x, tako_y))
+    
+    screen.blit(bomb_sprite, (bomb_x, bomb_y))
     
     screen.blit(beo_sprite, (beo_x, beo_y))
     
@@ -92,7 +106,6 @@ while running:
     # axis-aligned bounding boxes (AABB)
     # Collision detection between the character and the food
     
-    
     if (
         beo_x < tako_x + takoyaki_sprite.get_width() and
         beo_x + beo_sprite.get_width() > tako_x and
@@ -104,9 +117,33 @@ while running:
         score_box = my_font.render(f'Score: {score}', False, (0, 0, 0))
         
         nom_sound.play()
-
+        
         tako_x = random.randint(10, 900)
         tako_y = random.randint(10, 700)
+        
+        print(bomb_speed)
+        
+    # Move the bomb automatically
+    if bomb_x > SCREEN_WIDTH - bomb_sprite.get_width():
+        bomb_dx = -bomb_dx
+    elif bomb_y > SCREEN_HEIGHT - bomb_sprite.get_height():
+        bomb_dy = - bomb_dy
+    elif bomb_x < 0:
+        bomb_dx = -bomb_dx
+    elif bomb_y < 0:
+        bomb_dy = -bomb_dy
+
+    bomb_x += bomb_dx
+    bomb_y += bomb_dy
+
+    if (
+        beo_x < bomb_x + bomb_sprite.get_width() and
+        beo_x + beo_sprite.get_width() > bomb_x and
+        beo_y < bomb_y + bomb_sprite.get_height() and
+        beo_y + beo_sprite.get_height() > bomb_y):
+        
+        score -= 1
+        score_box = my_font.render(f'Score: {score}', False, (0, 0, 0))
         
     
     pg.display.flip()
