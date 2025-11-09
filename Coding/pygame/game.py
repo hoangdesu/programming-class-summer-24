@@ -36,10 +36,11 @@ bomb_x = random.randint(10, 900)
 bomb_y = random.randint(10, 700)
 # bomb_x = 700
 # bomb_y = 100
-bomb_speed = 15
+bomb_speed = 5
+
+# Changes in velocity (directions)
 bomb_dx = bomb_speed if random.randint(0, 1) == 1 else -bomb_speed
 bomb_dy = bomb_speed if random.randint(0, 1) == 1 else -bomb_speed
-
 
 score = 1
 my_font = pg.font.SysFont('Comic Sans MS', 30)
@@ -127,7 +128,7 @@ while running:
     if bomb_x > SCREEN_WIDTH - bomb_sprite.get_width():
         bomb_dx = -bomb_dx
     elif bomb_y > SCREEN_HEIGHT - bomb_sprite.get_height():
-        bomb_dy = - bomb_dy
+        bomb_dy = -bomb_dy
     elif bomb_x < 0:
         bomb_dx = -bomb_dx
     elif bomb_y < 0:
