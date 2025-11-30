@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'ValorantFont'; /* Choose a name for your font */
+    src: url('ValorantFont.ttf') format('ttf');
+    /* font-weight: normal;
+    font-style: normal; */
+    font-display: swap;
+}
+
+body {
+    font-family: 'ValorantFont';
+}
+
+h1, h2 {
+    font-family: 'ValorantFont';
+}
+
+main {
+    width: 80%;
+    margin: auto;
+    /* border: 1px solid red; */
+}
+
+#agents-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-columns: 1fr 3fr 2fr; */
+    gap: 32px;
+}
+
+.card {
+    img {
+        width: 100%;
+        height: 400px;
+        margin: 0;
+        object-fit: cover;
+        transition: all 200ms ease;
+    }
+
+    h2 {
+        background-color: rgb(236, 232, 225);
+        margin: 0;
+        padding: 16px;
+    }
+
+    img:hover {
+        transform: scale(1.1);
+    }
+}
